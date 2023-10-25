@@ -1,0 +1,2 @@
+25/23: subida 0: Tenemos la primera vercion, hasta ahora podemos graficar una señal muestreada, pero se crachea al usar pantalla grande
+		Tambien hay que agregar la comunicacion serial, y agregar archivos, tambien deberiamos agregar un menu donde podamos manejar los archivos que guardemso.
