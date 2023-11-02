@@ -1,0 +1,6 @@
+25/23: subida 0: Tenemos la primera vercion, hasta ahora podemos graficar una señal muestreada, pero se crachea al usar pantalla grande
+		Tambien hay que agregar la comunicacion serial, y agregar archivos, tambien deberiamos agregar un menu donde podamos manejar los archivos que guardemso.
+01/11: subida 1: Ya pudimos subsanar el error del crasheo en fullscreen, se debia a que en la funcion de receteo volvia a declarar el tamaño de la pantalla, ahora eso 
+		esta arreglado, tambien pusimos pestañas que nos ayudan a organizar no solamente el programa si no que los comentarios tambien, ya que cada pestaña
+		se encarga de generar ciertas tareas en especifico. Ahora reever la parte del mapeo, ver que cuando leo datos desde arduino tengo desde 0-1024, y luego lo mando con
+		Serial.write() ver que se manda baite por baite desde 0-255, lo faactible es mapear en arduino para mandar entre 0-255 y en prosessing mapear ala revez.
