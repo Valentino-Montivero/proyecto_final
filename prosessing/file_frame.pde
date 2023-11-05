@@ -3,7 +3,7 @@ class Frame{
 private
   PImage frame;
   int CantidadFrame;
-  boolean bandera =true;
+  boolean archivo =true,rec = false;
 public
 
   Frame(){
@@ -12,32 +12,35 @@ public
   }
   
   void guardar(){
-    while(CantidadFrame <= 200){
-      saveFrame("data/FrameECG/ECG-" + CantidadFrame + ".tif");
-    }
+    saveFrame("data/FrameECG/ECG-" + CantidadFrame + ".tif");
+    CantidadFrame++;
     
-    CantidadFrame = 1;
+    if(CantidadFrame>4){
+      CantidadFrame = 1;
+      rec = !rec;
+    }
   }
   
   void OpenFile(){
-    
-    while(bandera){
-      if((frame = loadImage("data/FrameECG/ECG-" + CantidadFrame + ".tif")) != null){
-        image(frame,0,0);
-        CantidadFrame++;
-      }else{
-        background(0);
-        fill(#FF3600);
-        textSize(50);
-        text("ERROR EN LECTURA",width/2,height/2);
-        delay(1000);
-        bandera = false;
-      }
-      if(CantidadFrame <= 200){
-        bandera = false;
-      }
-    }
-    frame = null;
-    CantidadFrame = 1;
+  
+    if((frame = loadImage("data/FrameECG/ECG-" + CantidadFrame + ".tif")) == null){
+       background(0);
+       fill(#FF3600);
+       textSize(50);
+       text("ERROR EN LECTURA",width/2,height/2);
+       archivo = false;
+     }
+  }
+  
+  void Rec(){
+    rec = !rec;
+  }
+  
+  boolean recOk(){
+    return rec;
+  }
+  
+  boolean archivOk(){
+   return archivo; 
   }
 };

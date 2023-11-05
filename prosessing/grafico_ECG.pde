@@ -19,6 +19,16 @@ void grafica(){
     }
   }
   
+  fill(200);
+  rect(width-100,10,60,50);
+  if(!file.recOk()){
+    fill(0);
+  }else{
+    fill(#FF0000);
+  }
+  textSize(30);
+  text("REC.",width-100,50);
+  
   stroke(#13FF00);
   strokeWeight(3);
 
@@ -33,6 +43,9 @@ void grafica(){
   igualar_terminos();
   
   if(fin.x==width){
+    if(file.recOk()){
+      file.guardar(); 
+    }
     Sumador =0;
     rewind();
   } 

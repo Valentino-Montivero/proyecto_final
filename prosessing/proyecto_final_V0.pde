@@ -1,6 +1,7 @@
 import processing.serial.*;
 Serial Arduino;
 pont beggin, fin; //Declaro un objeto del tipo pont para crear los puntos inicion y fin.
+Frame file;
 boolean grafico = false, archivo = false;
 PImage logo,ECG;//definimos las imagenes que deceamos usar en el menu.
 
@@ -9,6 +10,7 @@ void setup(){
   background(#79F1E5);
   beggin = new pont(); //Les añado memoria dinamica para poder usar el objeto.
   fin = new pont();
+  file = new Frame();
   printArray(Serial.list());
   Arduino = new Serial(this,Serial.list()[1],19200);
   print(Arduino);
@@ -17,6 +19,8 @@ void setup(){
 }
 
 void draw(){ 
+
+  
   if(!grafico && !archivo){
     fill(#50B2A9);
     rect(width/2-340,height/2-490,600,100,28);
@@ -45,21 +49,25 @@ void draw(){
     grafica();
   }
   
+  if(archivo){
+    file.OpenFile();
+  }
+  
 }
 
 void mousePressed(){
-  if((mouseX>width/2-530) && (mouseX<width/2-60) && (mouseY>height/2-90) && (mouseY<height/2+10) && !grafico && !archivo){
+  if((mouseX>width/2-530) && (mouseX<width/2-60) && (mouseY>height/2-90) && (mouseY<height/2+10) && !grafico){
     background(0);
     grafico = true;
   }
   
-  /*if((mouseX>width/2-530) && (mouseX<width/2+60) && (mouseY>height/2+100) && (mouseY<height/2+200)){
-      background(255);
-      imagen();
-  }else{
-      background(#79F1E5);
-      imagen();
-  }*/
+  if((mouseX>width/2-530) && (mouseX<width/2+60) && (mouseY>height/2+100) && (mouseY<height/2+200) && !archivo){
+      archivo = true;
+  }
+  
+  if((mouseX>width-100) && (mouseX<width-40) && (mouseY>10) && (mouseY<60) && grafico){
+    file.Rec();
+  }
 }
 
 void imagen(){ //esta funcion carga las imagenes y texto del menu principal.
