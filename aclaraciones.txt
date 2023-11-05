@@ -12,3 +12,6 @@
 		en el buffer de la PC y los iba leyendo a memdida que podia. Esto lo supongo por que cada que hacia algo en la señal tardaba en hacer algo en la PC pero al final si lo hacia,
 		y tambien se arreglo solo disminuyendo la velocidad de trasnferencia de datos.
 		 La señal ahora se ve bien, falta hacer un menu donde la presona pueda usar el programa y falta agregar una forma de guardar archivos en el sistema.
+05/11: subida 3: Se soluciono la mayoria de los problemas, ya no hay diley entre los datos enviado por arduino y la pc, la grafica es fluida, tambien creamos un menu para poder acceder tanto
+		a las grabaciones como a la grafica por ECG, tambien grabamos la pantalla por un intervalo de tiempo, esto se hace para poder guardar un ECG que se decee, siempre que se vuelve
+		a guardar los archivos se sobreescreibiran para no tener limitaciones de memoria, ni problemas en la busqueda de archivos.

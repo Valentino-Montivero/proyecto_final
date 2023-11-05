@@ -1,9 +1,34 @@
+int i=0;
+float Sumador = 0;
+
+void grafica(){
+  
+  stroke(#13FF00);
+  strokeWeight(3);
+
+  if(Arduino.available()>0){
+    i = (int)Arduino.read();
+    i =(int) map(i,0,255,-height*3/4,height*3/4);
+  }
+  
+  suma_de_funcion(i);
+  strokeWeight(3);
+  tramo_de_linea();
+  igualar_terminos();
+  
+  if(fin.x==width){
+    Sumador =0;
+    rewind();
+  } 
+ 
+}
+
 
 //En esta funcion vamos cambiando la posicion del punto con un sumador, luego sera con las señales del puerto serial.
 void suma_de_funcion(int _i){
   Sumador++;
-  fin.x =(int) map(Sumador,0,100,0,width);//la funcion map sirve para extrapolar la posicion a una mas comoda en la pantalla.
-  fin.y = (height/2)-_i;
+  fin.x =(int) map(Sumador,0,200,0,width);//la funcion map sirve para extrapolar la posicion a una mas comoda en la pantalla.
+  fin.y = (height/4)-_i;
 }
 
 void tramo_de_linea(){//esta funcion sirve para crear una linea recta entre el punto anterior y el sigiente.

@@ -1,44 +1,49 @@
-pont beggin, fin; //Declaro un objeto del tipo pont para crear los puntos inicion y fin.
-float Sumador = 0;
 import processing.serial.*;
 Serial Arduino;
-int i=0;
+pont beggin, fin; //Declaro un objeto del tipo pont para crear los puntos inicion y fin.
+
+PImage logo,ECG;
 
 void setup(){
   fullScreen();
-  background(0);
+  background(#79F1E5);
   beggin = new pont(); //Les añado memoria dinamica para poder usar el objeto.
   fin = new pont();
-  stroke(255);
+  /*stroke(255);
   line(0,height/2,width,height/2);
   stroke(255,100);
   line(0,height/2+height*3/8,width,height/2+height*3/8);
   stroke(255,100);
   line(0,height/2-height*3/8,width,height/2-height*3/8);
-  printArray(Serial.list());
-  Arduino = new Serial(this,Serial.list()[1],19200);
-  println(Arduino);
+  printArray(Serial.list());*/
+ // Arduino = new Serial(this,Serial.list()[1],19200);
+  //println(Arduino);
+  
+  logo = loadImage("data/logo-hospital.png");
+  ECG = loadImage("data/ECG-linea.png");
+  ECG.resize(200,200);
+  logo.resize(200,200);
+  image(ECG,width/2-50,height/2-120);
+  image(logo,width/2-900,height/2+300);
+  textSize(30);
+  text("By Valentino_Montivero.",width/2+600,height/2+500);
 }
 
 void draw(){ 
   
-  stroke(#13FF00);
-  strokeWeight(3);
-
-  if(Arduino.available()>0){
-    i = (int)Arduino.read();
-    i =(int) map(i,0,255,-height*3/4,height*3/4);
-  }
+  fill(#50B2A9);
+  rect(width/2-340,height/2-490,600,100,28);
+  fill(255);
+  textSize(100);
+  text("ECG-Arduino",width/2-300,height/2-400);
   
-  suma_de_funcion(i);
-  strokeWeight(3);
-  tramo_de_linea();
-  igualar_terminos();
+  fill(#5097B2);
+  rect(width/2-530,height/2-90,470,100,28);
+  fill(255);
+  text("Mirar-ECG",width/2-500,height/2);
   
-  if(fin.x==width){
-    Sumador =0;
-    rewind();
-  }
-  
-  delay(50);
+  fill(#5097B2);
+  rect(width/2-530,height/2+100,590,100,28);
+  fill(255);
+  text("Grabaciones",width/2-500,height/2+190);
 }
