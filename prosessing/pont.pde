@@ -4,6 +4,10 @@ public
     x = 0;
     y = height/2;
   }
+  void recet(){
+    x = 0;
+    y = height/2;
+  }
   int x ;
   int y ;
 };

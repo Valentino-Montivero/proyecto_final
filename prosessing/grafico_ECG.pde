@@ -1,7 +1,23 @@
 int i=0;
 float Sumador = 0;
+PImage back;
 
 void grafica(){
+  
+  back = loadImage("data/flecha-atras.png");
+  back.resize(100,100);
+  image(back,0,0);
+  if(mousePressed){
+    float d = dist(mouseX,mouseY,50,50);
+    if(d <= 50){
+      grafico = false;
+      background(#79F1E5);
+      imagen();
+      beggin.recet(); 
+      fin.recet();
+      return;
+    }
+  }
   
   stroke(#13FF00);
   strokeWeight(3);
@@ -43,6 +59,7 @@ void igualar_terminos(){ // ahora igualo los terminos del anterior con el siguie
 //esta funcion hace que una vez llegado al final, la grafica se reinicie.
 void rewind(){
  background(0);
+ image(back,0,0);
   beggin = new pont();
   fin = new pont();
   strokeWeight(1);
