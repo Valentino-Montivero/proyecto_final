@@ -19,7 +19,14 @@ void setup(){
 }
 
 void draw(){ 
-
+  
+  if(!file.foldOk() && archivo){
+    delay(1000);
+    archivo = !archivo;
+    file.FoldChange();
+    background(#79F1E5);
+    imagen();
+  }
   
   if(!grafico && !archivo){
     fill(#50B2A9);
@@ -58,6 +65,7 @@ void draw(){
 void mousePressed(){
   if((mouseX>width/2-530) && (mouseX<width/2-60) && (mouseY>height/2-90) && (mouseY<height/2+10) && !grafico){
     background(0);
+    Arduino.clear();
     grafico = true;
   }
   
@@ -71,6 +79,7 @@ void mousePressed(){
 }
 
 void imagen(){ //esta funcion carga las imagenes y texto del menu principal.
+  fill(255);
   logo = loadImage("data/logo-hospital.png");
   ECG = loadImage("data/ECG-linea.png");
   ECG.resize(200,200);

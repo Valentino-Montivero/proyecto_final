@@ -15,3 +15,7 @@
 05/11: subida 3: Se soluciono la mayoria de los problemas, ya no hay diley entre los datos enviado por arduino y la pc, la grafica es fluida, tambien creamos un menu para poder acceder tanto
 		a las grabaciones como a la grafica por ECG, tambien grabamos la pantalla por un intervalo de tiempo, esto se hace para poder guardar un ECG que se decee, siempre que se vuelve
 		a guardar los archivos se sobreescreibiran para no tener limitaciones de memoria, ni problemas en la busqueda de archivos.
+		Ya empezamos solo con la programacion en arduino, tenemos que crear una clase para manejar tanto la pantalla oled como las veces que vamos a mandar datos a la pc, ya que no quiero
+		que se este mandando informacion todo el tiempo porque se acumula en el buzzer y luego crea problemas, tambien cambiamos la velocidad serial de 9600 a 19200, esto debide a que se 
+		manda mejor y se toma mejor los datos de esta manera. Lo que quiero es poder usar botones para manejar el menu de processing tambien, y que podamos poner la pantalla oled para
+		decir cuantas PPS tenemos, y por ultimo retocar cosas de la parte de hardward.
