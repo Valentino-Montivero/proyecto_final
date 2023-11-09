@@ -1,0 +1,21 @@
+25/23: subida 0: Tenemos la primera vercion, hasta ahora podemos graficar una señal muestreada, pero se crachea al usar pantalla grande
+		Tambien hay que agregar la comunicacion serial, y agregar archivos, tambien deberiamos agregar un menu donde podamos manejar los archivos que guardemso.
+01/11: subida 1: Ya pudimos subsanar el error del crasheo en fullscreen, se debia a que en la funcion de receteo volvia a declarar el tamaño de la pantalla, ahora eso 
+		esta arreglado, tambien pusimos pestañas que nos ayudan a organizar no solamente el programa si no que los comentarios tambien, ya que cada pestaña
+		se encarga de generar ciertas tareas en especifico. Ahora reever la parte del mapeo, ver que cuando leo datos desde arduino tengo desde 0-1024, y luego lo mando con
+		Serial.write() ver que se manda baite por baite desde 0-255, lo faactible es mapear en arduino para mandar entre 0-255 y en prosessing mapear ala revez.
+03/11: subida 2: Areglamos la comunicacion serial que no se mostraba de forma adecuada, lo que pasaba era que la funcion read de prosessing leia en bytes y entregaba numeros de 0 a 255
+		y la funcion Serial.wirte de arduino enviaba un entero que pesa 4 bytes, por lo tanto el dato que llegaba era incorrecto en terminos de proceso de informacion, esto lo 
+		arreglamos usando un dato byte en arduino, luego de leer por el analogRead que nos entrega valores enteros de 0 a 1024 lo mapeamos con la funcion "map" asi extrapolamos
+		esos numeros a un rango de 0 a 255 y se lo otorgamos al byte que mandamos por Serial.write hacia processing. Otro error que se arreglo fue que la señal en prosecin parecia 
+		no tener coneccion con los datos enviados desde arduino, mi hipotesis es que la cantidad de datos que mandaba arduino eran muchos ya que solo eran bytes estos se almacenaban
+		en el buffer de la PC y los iba leyendo a memdida que podia. Esto lo supongo por que cada que hacia algo en la señal tardaba en hacer algo en la PC pero al final si lo hacia,
+		y tambien se arreglo solo disminuyendo la velocidad de trasnferencia de datos.
+		 La señal ahora se ve bien, falta hacer un menu donde la presona pueda usar el programa y falta agregar una forma de guardar archivos en el sistema.
+05/11: subida 3: Se soluciono la mayoria de los problemas, ya no hay diley entre los datos enviado por arduino y la pc, la grafica es fluida, tambien creamos un menu para poder acceder tanto
+		a las grabaciones como a la grafica por ECG, tambien grabamos la pantalla por un intervalo de tiempo, esto se hace para poder guardar un ECG que se decee, siempre que se vuelve
+		a guardar los archivos se sobreescreibiran para no tener limitaciones de memoria, ni problemas en la busqueda de archivos.
+		Ya empezamos solo con la programacion en arduino, tenemos que crear una clase para manejar tanto la pantalla oled como las veces que vamos a mandar datos a la pc, ya que no quiero
+		que se este mandando informacion todo el tiempo porque se acumula en el buzzer y luego crea problemas, tambien cambiamos la velocidad serial de 9600 a 19200, esto debide a que se 
+		manda mejor y se toma mejor los datos de esta manera. Lo que quiero es poder usar botones para manejar el menu de processing tambien, y que podamos poner la pantalla oled para
+		decir cuantas PPS tenemos, y por ultimo retocar cosas de la parte de hardward.
