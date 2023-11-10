@@ -3,7 +3,7 @@ byte a;
 #define boton2 8
 #define led 2
 int i=0;
-bool b = true;
+bool b = true; float tiempo;
 
 void setup() {
   Serial.begin(19200);
@@ -17,15 +17,16 @@ void loop() {
   a = map(i,0,1024,0,255);
   Serial.write(a);*/
   i = analogRead(A0);
-  if(i>560){
+  Serial.println(i);
+  if(i>550){
     digitalWrite(led,HIGH);
     tone(10,455);
     if(b){
       tiempo = millis();
-      b = !b;
+      b = false;
     }else{
       tiempo = millis()-tiempo;
-      b = !b;
+      b = true;
       Serial.print("PPM:");
       tiempo = 600 / tiempo;
       Serial.println(tiempo);
