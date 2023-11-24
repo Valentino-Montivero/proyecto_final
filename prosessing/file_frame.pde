@@ -3,7 +3,7 @@ class Frame{
 private
   PImage frame;
   int CantidadFrame;
-  boolean fold =true,rec = false;
+  boolean fold =false,rec = false;
 public
 
   Frame(){
@@ -12,7 +12,7 @@ public
   }
   
   void guardar(){
-    saveFrame("data/FrameECG/ECG-" + CantidadFrame + ".tif");
+    saveFrame("data/FrameECG/ECG-" + usser + "/" + CantidadFrame +".tif");
     CantidadFrame++;
     
     if(CantidadFrame>4){
@@ -22,7 +22,7 @@ public
   }
   
   void OpenFile(){
-    if((frame = loadImage("data/FrameECG/ECG-" + CantidadFrame + ".tif")) != null){
+    if((frame = loadImage("data/FrameECG/ECG-" + usser + "/" + CantidadFrame +".tif")) != null){
       if(CantidadFrame > 1){
          delay(1000);
       }
@@ -30,15 +30,16 @@ public
        CantidadFrame++;
      }else{
        if(CantidadFrame == 1){
+         CantidadFrame = 1;
          background(0);
          fill(#FF3600);
          textSize(50);
-         text("ERROR EN LECTURA",width/2,height/2);
+         text("ERROR EN LECTURA",width/2-250,height/2);
          return;
        } else{
          CantidadFrame = 1;
        }
-       fold = false;
+       fold = true;
      }
   }
   

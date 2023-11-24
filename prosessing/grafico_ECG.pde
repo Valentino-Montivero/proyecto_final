@@ -21,6 +21,7 @@ void grafica(){
   
   fill(200);
   rect(width-100,10,60,50);
+  
   if(!file.recOk()){
     fill(0);
   }else{

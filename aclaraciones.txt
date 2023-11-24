@@ -19,3 +19,6 @@
 		que se este mandando informacion todo el tiempo porque se acumula en el buzzer y luego crea problemas, tambien cambiamos la velocidad serial de 9600 a 19200, esto debide a que se 
 		manda mejor y se toma mejor los datos de esta manera. Lo que quiero es poder usar botones para manejar el menu de processing tambien, y que podamos poner la pantalla oled para
 		decir cuantas PPS tenemos, y por ultimo retocar cosas de la parte de hardward.
+24/11: subida 4: Ya se soluciono todos los problemas de archivos y todos los problemas de comunicacion, el arduino se comunica constantemente con la pc, grafica, y guarda por usuario, tiene la 
+		posibilidad de cambiar el usuario y muestra si se quiere buscar archivos y no hay, no es necesario cerrar el programa cuando pasa eso. Y se implemento una pantalla que muestra
+		los PPM de la persona mas un regulador para setear el pico del ECG para distintas personas. Se considera que esta terminado el proyecto.
