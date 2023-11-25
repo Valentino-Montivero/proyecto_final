@@ -22,3 +22,4 @@
 24/11: subida 4: Ya se soluciono todos los problemas de archivos y todos los problemas de comunicacion, el arduino se comunica constantemente con la pc, grafica, y guarda por usuario, tiene la 
 		posibilidad de cambiar el usuario y muestra si se quiere buscar archivos y no hay, no es necesario cerrar el programa cuando pasa eso. Y se implemento una pantalla que muestra
 		los PPM de la persona mas un regulador para setear el pico del ECG para distintas personas. Se considera que esta terminado el proyecto.
+25/11: subida 5: Ya se retocaron los ultimos puntos, se organizaron las funciones y se comento las partes que faltaban, el proyecto ya esta listo.

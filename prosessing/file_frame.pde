@@ -6,12 +6,12 @@ private
   boolean fold =false,rec = false;
 public
 
-  Frame(){
+  Frame(){ //constructor
     frame = null;
     CantidadFrame = 1;
   }
   
-  void guardar(){
+  void guardar(){ //se encarga de guardar el archivo en su carpeta correspondiente hasta la cuarta imagen y reinicia cambiando el bool rec.
     saveFrame("data/FrameECG/ECG-" + usser + "/" + CantidadFrame +".tif");
     CantidadFrame++;
     
@@ -21,7 +21,7 @@ public
     }
   }
   
-  void OpenFile(){
+  void OpenFile(){ //sirve para habrir un archivo y asegurarme que este bien leido, caso contrario muestro un mensaje de error son cambiar el bool rec y no reinicio.
     if((frame = loadImage("data/FrameECG/ECG-" + usser + "/" + CantidadFrame +".tif")) != null){
       if(CantidadFrame > 1){
          delay(1000);
@@ -38,23 +38,27 @@ public
          return;
        } else{
          CantidadFrame = 1;
+         fold = true;
        }
-       fold = true;
      }
   }
   
-  void Rec(){
+  void Rec(){ // cambiamos el bool rec para empezar a grabar
     rec = !rec;
   }
   
-  boolean recOk(){
+  boolean getRec(){
     return rec;
   }
   
-  boolean foldOk(){
+  boolean getFold(){
    return fold; 
   }
   void FoldChange(){
     fold = !fold;
   }
 };
+
+/* Esta es la clase Frame creada para la manipulacion de archivos y la lectura de los mismos, tambien controlamos los bool como fold y rec para saber si estamos 
+grabando o bien estamos tratando de leer un archivo
+*/
