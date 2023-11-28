@@ -37,23 +37,6 @@ tambien limpiamos cualquier basura que pueda tener y bloqueamos los fps a 60.
 
 void draw(){ 
   
-  if(file.getFold() && archivo){ //este if se utiliza para saver si llegamos a la ultima imagen de la galeria de los ECGs
-    delay(1000);
-    archivo = !archivo;
-    file.FoldChange();
-    background(#79F1E5);
-    imagen();
-  }
-  
-  if(!file.getFold() && archivo){//este if se utiliza cuando al habrir un archivo de ECG sale un error, cuando tocamos cualquier tecla volvemos al menu principal.
-    if(keyPressed){
-      archivo = !archivo;
-      file.FoldChange();
-      background(#79F1E5);
-      imagen();
-    }
-  }
-  
   if(usuario){ // Este if sirve para ingresar los usuarios, o binen, cambiarlos. 
     background(#79F1E5);
     fill(0);
@@ -113,6 +96,23 @@ void draw(){
   
   if(archivo){ // este if sirve para empezar a leer un archivo de los guardados.
     file.OpenFile();
+  }
+  
+    if(file.getFold() && archivo){ //este if se utiliza para saver si llegamos a la ultima imagen de la galeria de los ECGs
+    delay(1000);
+    archivo = !archivo;
+    file.FoldChange();
+    background(#79F1E5);
+    imagen();
+  }
+  
+  if(!file.getFold() && archivo){//este if se utiliza cuando al habrir un archivo de ECG sale un error, cuando tocamos cualquier tecla volvemos al menu principal.
+    if(keyPressed){
+      archivo = !archivo;
+      file.FoldChange();
+      background(#79F1E5);
+      imagen();
+    }
   }
   
 }
